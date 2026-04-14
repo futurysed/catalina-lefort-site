@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dra. Catalina Lefort — Lifestyle Medicine &amp; Plant-Based Nutrition</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream:        '#FAF8F4',
+            'cream-dark': '#F0EDE6',
+            forest:       '#2B4A39',
+            'forest-mid': '#3A6150',
+            'forest-light':'#E8F0EB',
+            camel:        '#BFA07A',
+            'camel-light':'#EAE0D0',
+            charcoal:     '#1C1C1A',
+            muted:        '#6A6A65',
+            'muted-light':'#9A9A95',
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+            sans:  ['Satoshi', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background-color: #FAF8F4; }
+
+    .grain::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-10px); }
+    }
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50%       { transform: scale(1.3); opacity: 0.7; }
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .anim-fade-up            { animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) both; }
+    .anim-fade-up.delay-1    { animation-delay: 0.12s; }
+    .anim-fade-up.delay-2    { animation-delay: 0.24s; }
+    .anim-fade-up.delay-3    { animation-delay: 0.38s; }
+    .anim-fade-up.delay-4    { animation-delay: 0.52s; }
+    .float                   { animation: floatY 7s ease-in-out infinite; }
+    .pulse-dot               { animation: pulse-dot 2.4s ease-in-out infinite; }
+    .marquee-track           { animation: marquee 28s linear infinite; }
+
+    .btn-forest { transition: all 0.25s cubic-bezier(0.16,1,0.3,1); }
+    .btn-forest:hover { transform: translateY(-2px); box-shadow: 0 12px 28px -8px rgba(43,74,57,0.42); }
+    .btn-forest:active { transform: scale(0.97); }
+
+    .btn-ghost { transition: all 0.2s ease; }
+    .btn-ghost:hover { color: #2B4A39; }
+    .btn-ghost:hover svg { transform: translateX(4px); }
+    .btn-ghost svg { transition: transform 0.2s ease; }
+
+    .card-lift { transition: all 0.32s cubic-bezier(0.16,1,0.3,1); }
+    .card-lift:hover { transform: translateY(-6px); box-shadow: 0 24px 48px -16px rgba(43,74,57,0.12); }
+
+    .nav-link { position: relative; transition: color 0.2s; }
+    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: #2B4A39; transition: width 0.25s cubic-bezier(0.16,1,0.3,1); }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:hover { color: #2B4A39; }
+
+    .img-overlay { background: linear-gradient(to right, #FAF8F4 0%, rgba(250,248,244,0.35) 40%, transparent 80%); }
+
+    .spotlight-card { position: relative; overflow: hidden; transition: all 0.3s ease; }
+    .spotlight-card::before { content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; background: linear-gradient(135deg, transparent 40%, rgba(191,160,122,0.5) 100%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.3s; }
+    .spotlight-card:hover::before { opacity: 1; }
+
+    /* Quiz */
+    .q-opt { transition: all 0.2s cubic-bezier(0.16,1,0.3,1); cursor: pointer; }
+    .q-opt:hover { border-color: #2B4A39; background: #E8F0EB; transform: translateY(-1px); }
+    .q-opt:active { transform: scale(0.98); }
+    #quiz-bar { transition: width 0.4s cubic-bezier(0.16,1,0.3,1); }
+
+    /* ── Full-screen funnel overlay ── */
+    #fo {
+      position: fixed; inset: 0; z-index: 1000;
+      background: #FAF8F4;
+      display: none; flex-direction: column;
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+    }
+    #fo.open { display: flex; }
+    #fo-close {
+      position: fixed; top: 18px; right: 20px; z-index: 1010;
+      background: #F0EDE6; border: none; cursor: pointer;
+      width: 36px; height: 36px; border-radius: 50%;
+      display: none; align-items: center; justify-content: center;
+      color: #6A6A65; transition: background 0.2s, color 0.2s;
+    }
+    #fo-close:hover { background: #EAE0D0; color: #1C1C1A; }
+    #fo.open #fo-close { display: flex; }
+    #fo-prog-wrap {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1005;
+      background: #FAF8F4; border-bottom: 1px solid #EAE0D0;
+      padding: 14px 56px 14px 20px;
+      display: none; align-items: center; gap: 12px;
+    }
+    #fo.open #fo-prog-wrap { display: flex; }
+    #fo-back {
+      background: none; border: none; cursor: pointer;
+      color: #2B4A39; padding: 4px; border-radius: 6px;
+      display: flex; align-items: center; flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    #fo-back:hover { background: #E8F0EB; }
+    #fo-track {
+      flex: 1; height: 4px; background: #EAE0D0;
+      border-radius: 99px; overflow: hidden;
+    }
+    #fo-fill {
+      height: 100%; background: #2B4A39; border-radius: 99px;
+      transition: width 0.38s cubic-bezier(0.16,1,0.3,1);
+    }
+    #fo-count { font-size: 11px; color: #9A9A95; font-weight: 500; min-width: 30px; text-align: right; }
+    .fo-screen { display: none; flex-direction: column; width: 100%; padding: 28px 24px 48px; max-width: 540px; margin: 0 auto; }
+    .fo-screen.fo-active { display: flex; }
+    .fo-screen.fo-has-prog { padding-top: 76px; }
+    .fo-screen.fo-slide-r { animation: foSlideR 0.26s cubic-bezier(0.16,1,0.3,1) both; }
+    .fo-screen.fo-slide-l { animation: foSlideL 0.26s cubic-bezier(0.16,1,0.3,1) both; }
+    @keyframes foSlideR { from { opacity:0; transform:translateX(36px); } to { opacity:1; transform:translateX(0); } }
+    @keyframes foSlideL { from { opacity:0; transform:translateX(-36px); } to { opacity:1; transform:translateX(0); } }
+    .fo-label { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: #9A9A95; margin-bottom: 10px; font-family: 'Satoshi', sans-serif; }
+    .fo-q { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.3rem,4vw,1.65rem); color: #1C1C1A; line-height: 1.28; margin-bottom: 26px; }
+    .fo-opts { display: flex; flex-direction: column; gap: 10px; }
+    .fo-opt {
+      background: #fff; border: 1.5px solid #EAE0D0; border-radius: 14px;
+      padding: 15px 18px; text-align: left; cursor: pointer;
+      font-family: 'Satoshi', system-ui, sans-serif; font-size: 0.95rem; color: #6A6A65; line-height: 1.4;
+      display: flex; align-items: center; gap: 12px;
+      box-shadow: 0 2px 12px rgba(43,74,57,0.05);
+      transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .fo-opt:hover { border-color: #2B4A39; color: #1C1C1A; transform: translateY(-1px); }
+    .fo-opt.fo-sel { border-color: #2B4A39; background: #E8F0EB; color: #2B4A39; font-weight: 500; }
+    .fo-circle { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #EAE0D0; flex-shrink: 0; transition: border-color 0.2s, background 0.2s; }
+    .fo-opt.fo-sel .fo-circle { border-color: #2B4A39; background: #2B4A39; box-shadow: inset 0 0 0 3px #fff; }
+    /* Contact form */
+    .fo-inp { width: 100%; padding: 13px 16px; border: 1.5px solid #EAE0D0; border-radius: 10px; font-family: 'Satoshi', sans-serif; font-size: 0.95rem; color: #1C1C1A; background: #fff; outline: none; transition: border-color 0.2s; }
+    .fo-inp:focus { border-color: #2B4A39; }
+    .fo-inp::placeholder { color: #9A9A95; }
+    .fo-lbl { font-size: 12px; font-weight: 600; color: #6A6A65; display: block; margin-bottom: 6px; font-family: 'Satoshi', sans-serif; }
+    .fo-btn-primary {
+      width: 100%; padding: 15px; background: #2B4A39; color: #FAF8F4;
+      border: none; border-radius: 99px; font-family: 'Satoshi', sans-serif;
+      font-size: 1rem; font-weight: 600; cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 18px rgba(43,74,57,0.25);
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .fo-btn-primary:hover { background: #3A6150; transform: translateY(-1px); box-shadow: 0 6px 22px rgba(43,74,57,0.32); }
+    .fo-btn-outline {
+      width: 100%; padding: 13px; background: transparent; color: #2B4A39;
+      border: 1.5px solid #2B4A39; border-radius: 99px; font-family: 'Satoshi', sans-serif;
+      font-size: 0.95rem; font-weight: 600; cursor: pointer;
+      transition: background 0.2s, transform 0.2s; text-decoration: none;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .fo-btn-outline:hover { background: #E8F0EB; transform: translateY(-1px); }
+    .fo-results-card { background: #fff; border: 1.5px solid #EAE0D0; border-radius: 18px; padding: 22px; margin-bottom: 18px; box-shadow: 0 2px 12px rgba(43,74,57,0.05); }
+    .fo-check-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 11px; }
+    .fo-check-item:last-child { margin-bottom: 0; }
+    .fo-check-icon { width: 20px; height: 20px; background: #E8F0EB; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  </style>
+</head>
+<body class="font-sans text-charcoal antialiased grain">
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- FULL-SCREEN FUNNEL OVERLAY                                         -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <div id="fo" role="dialog" aria-modal="true" aria-label="Evaluación de salud personalizada">
+
+    <!-- Close (X) -->
+    <button id="fo-close" onclick="foClose()" aria-label="Cerrar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <!-- Progress bar (hidden on hero + results) -->
+    <div id="fo-prog-wrap">
+      <button id="fo-back" onclick="foBack()" aria-label="Volver">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div id="fo-track"><div id="fo-fill" style="width:0%"></div></div>
+      <span id="fo-count">0 / 10</span>
+    </div>
+
+    <!-- ── SCREEN: Hero ── -->
+    <div id="fo-hero" class="fo-screen fo-active" style="justify-content:center;min-height:100dvh;text-align:center;align-items:center;padding-top:40px;">
+      <span style="display:inline-flex;align-items:center;gap:6px;background:#E8F0EB;color:#2B4A39;border-radius:99px;padding:5px 14px;font-size:11px;font-weight:600;letter-spacing:0.06em;margin-bottom:24px;font-family:'Satoshi',sans-serif;">
+        <span style="width:7px;height:7px;background:#2B4A39;border-radius:50%;display:inline-block;"></span>
+        Evaluación gratuita · 2 minutos
+      </span>
+      <h1 style="font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.75rem,5vw,2.4rem);color:#1C1C1A;line-height:1.18;margin-bottom:16px;max-width:18ch;">
+        ¿Tu cuerpo te está mandando señales que los médicos
+        <em style="color:#2B4A39;"> no han sabido responder?</em>
+      </h1>
+      <p style="font-size:1rem;color:#6A6A65;line-height:1.65;margin-bottom:32px;max-width:44ch;font-family:'Satoshi',sans-serif;">
+        Descubre exactamente qué está pasando con tu salud — y qué puedes hacer al respecto, basado en evidencia, sin extremos.
+      </p>
+      <div style="font-size:11px;color:#9A9A95;margin-bottom:36px;font-family:'Satoshi',sans-serif;">
+        Dra. Catalina Lefort &nbsp;·&nbsp; Médica &nbsp;·&nbsp; Medicina del Estilo de Vida &nbsp;·&nbsp; Online
+      </div>
+      <button class="fo-btn-primary" onclick="foGo('q1')" style="max-width:320px;font-size:1rem;">
+        Comenzar mi evaluación
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <p style="margin-top:12px;font-size:12px;color:#9A9A95;font-family:'Satoshi',sans-serif;">10 preguntas · menos de 2 minutos</p>
+    </div>
+
+    <!-- ── Q1: Trigger ── -->
+    <div id="fo-q1" class="fo-screen fo-has-prog">
+      <p class="fo-label">Pregunta 1 de 10</p>
+      <h2 class="fo-q">¿Qué te trajo aquí hoy?</h2>
+      <div class="fo-opts">
+        <button class="fo-opt" onclick="foAnswer('trigger','exams',this,'q2')"><span class="fo-circle"></span>Mis exámenes salieron alterados y no sé qué hacer</button>
+        <button class="fo-opt" onclick="foAnswer('trigger','fatigue',this,'q2')"><span class="fo-circle"></span>Siempre estoy cansada y no encuentro por qué</button>
+        <button class="fo-opt" onclick="foAnswer('trigger','plants',this,'q2')"><span class="fo-circle"></span>Quiero comer más plantas pero temo tener deficiencias</button>
+        <button class="fo-opt" onclick="foAnswer('trigger','prevention',this,'q2')"><span class="fo-circle"></span>Quiero prevenir enfermedades sin depender de medicamentos</button>
+      </div>
+    </div>
+
+    <!-- ── Q2: Symptom depth ── -->
+    <div id="fo-q2" class="fo-screen fo-has-prog">
+      <p class="fo-label">Pregunta 2 de 10</p>
+      <h2 class="fo-q">¿Cuál de estas te describe mejor ahora mismo?</h2>
+      <div class="fo-opts">
+        <button class="fo-opt" onclick="foAnswer('symptom','tired',this,'q3')"><span class="fo-circle"></span>Me levanto cansada aunque duerma suficiente</button>
+        <button class="fo-opt" onclick="foAnswer('symptom','normal_labs',this,'q3')"><span class="fo-circle"></span>Siento que algo está mal, pero me dicen que "mis exámenes están normales"</button>
+        <button class="fo-opt" onclick="foAnswer('symptom','altered',this,'q3')"><span class="fo-circle"></span>Tengo valores alterados (colesterol, B12, glicemia) y mi médico solo me dijo "come mejor"</button>
+        <button class="fo-opt" onclick="foAnswer('symptom','optimize',this,'q3')"><span class="fo-circle"></span>Me siento relativamente bien — quiero optimizar mi salud al máximo</button>
+      </div>
+    </div>
+
+    <!-- ── Q3: Lab status ── -->
+    <div id="fo-q3" class="fo-screen fo-has-prog">
+      <p class="fo-label">Pregunta 3 de 10</p>
+      <h2 class="fo-q">¿Tienes exámenes de sangre de los últimos 12 meses?</h2>
+      <div class="fo-opts">
+        <button class="fo-opt" onclick="foAnswer('labs','yes_altered',this,'q4')"><span class="fo-circle"></span>Sí, y algunos valores están fuera del rango normal</button>
+        <button class="fo-opt" onclick="foAnswer('labs','yes_normal',this,'q4')"><span class="fo-circle"></span>Sí, pero según mi médico "todo está normal"</button>
+        <button class="fo-opt" onclick="foAnswer('labs','no_old',this,'q4')"><span class="fo-circle"></span>No, hace más de un año que no me los hago</button>
+        <button class="fo-opt" onclick="foAnswer('labs','no_want',this,'q4')"><span class="fo-circle"></span>Todavía no — quiero hacérmelos</button>
+      </div>
+    </div>
+
+    <!-- ── Q4: Duration ── -->
+    <div id="fo-q4" class="fo-screen fo-has-prog">
+      <p class="fo-label">Pregunta 4 de 10</p>
+      <h2 class="fo-q">¿Cuánto tiempo llevas sintiéndote así?</h2>
+      <div class="fo-opts">
+        <button class="fo-opt" onclick="foAnswer('duration','less3m',this,'q5')"><span class="fo-circle"></span>Menos de 3 meses — empezó hace poco</button>
+        <button class="fo-opt" onclick="foAnswer('duration','3_12m',this,'q5')"><span class="fo-circle"></span>Entre 3 y 12 meses</button>
+        <button class="fo-opt" onclick="foAnswer('duration','over1y',this,'q5')"><span class="fo-circle"></span>Más de un año</button>
+        <button class="fo-opt" onclick="foAnswer('duration','always',this,'q5')"><span class="fo-circle"></span>Desde siempre — no recuerdo haberme sentido diferente</button>
+      </div>
+    </div>
+
+    <!-- ── Q5: Failed attempts ── -->
+    <div id="fo-q5" class="fo-screen fo-has-prog">
+      <p class="fo-label">Pregunta 5 de 10</p>
+      <h2 class="fo-q">¿Has probado algo para mejorar tu energía o tu salud?</h2>
+      <div class="fo-opts">
+        <button class="fo-opt" onclick="foAnswer('attempts','diet_no_results',this,'q6')"><span class="fo-circle"></span>Sí, cambié mi alimentación pero no vi resultados claros</button>
+        <button class="fo-opt" onclick="foAnswer('attempts','supplements',this,'q6')"><span class="fo-circle"></span>Sí, tomé suplementos — sin saber si eran los correctos para mí</button>
+        <button class="fo-opt" onclick="foAnswer('attempts','doctor_no_help',this,'q6')"><span class="fo-circle"></span>Sí, fui al médico pero salí igual de confundida</button>
+        <button class="fo-opt" onclick="foAnswer('attempts','nothing',this,'q6')"><span class="fo-circle"></span>No he probado nada — no sé por dónde empezar</button>
+      </div>
+    </div>
+
+    <!-- ── Q6: Plant-based fear ── -->
+    <div id="fo-q6" class="fo-screen fo-has-prog">
+      <p class="fo-label">Pregunta 6 de 10</p>
+      <h2 class="fo-q">Si comieras más plantas, ¿qué te preocuparía más?</h2>
+      <div class="fo-opts">
+        <button class="fo-opt" onclick="foAnswer('fear','protein',this,'q7')"><span class="fo-circle"></span>Que me falte proteína</button>
+        <button class="fo-opt" onclick="foAnswer('fear','b12_iron',this,'q7')"><span class="fo-circle"></span>Que me bajen el B12 o el hierro</button>
+        <button class="fo-opt" onclick="foAnswer('fear','family',this,'q7')"><span class="fo-circle"></span>Que mi familia no quiera comer lo mismo</button>
+        <button class="fo-opt" onclick="foAnswer('fear','already',this,'q7')"><span class="fo-circle"></span>Nada — ya como bastante plant-based y quiero hacerlo bien</button>
+        <button class="fo-opt" onclick="foAnswer('fear','not_considered',this,'q7')"><span class="fo-circle"></span>No lo había considerado todavía</button>
+      </div>
+    </div>
+
+    <!-- ── Q7: Current diet ── -->
+    <div id="fo-q7" class="fo-screen fo-has-prog">
+      <p class="fo-label">Pregunta 7 de 10</p>
+      <h2 class="fo-q">¿Cómo describirías tu alimentación hoy?</h2>
+      <div class="fo-opts">
+        <button class="fo-opt" onclick="foAnswer('diet','unrestricted',this,'q8')"><span class="fo-circle"></span>Como de todo, sin mayores restricciones</button>
+        <button class="fo-opt" onclick="foAnswer('diet','trying',this,'q8')"><span class="fo-circle"></span>Trato de comer sano, pero no siempre lo logro</button>
+        <button class="fo-opt" onclick="foAnswer('diet','healthy_want_more',this,'q8')"><span class="fo-circle"></span>Ya como bastante saludable — quiero personalizarlo más</button>
+        <button class="fo-opt" onclick="foAnswer('diet','mostly_plant',this,'q8')"><span class="fo-circle"></span>Casi plant-based — quiero asegurarme de hacerlo bien</button>
+      </div>
+    </div>
+
+    <!-- ── Q8: Goal ── -->
+    <div id="fo-q8" class="fo-screen fo-has-prog">
+      <p class="fo-label">Pregunta 8 de 10</p>
+      <h2 class="fo-q">¿Qué quieres que cambie en los próximos 90 días?</h2>
+      <div class="fo-opts">
+        <button class="fo-opt" onclick="foAnswer('goal','energy',this,'q9')"><span class="fo-circle"></span>Tener más energía durante el día (sin depender del café)</button>
+        <button class="fo-opt" onclick="foAnswer('goal','labs',this,'q9')"><span class="fo-circle"></span>Entender mis exámenes y saber exactamente qué hacer con ellos</button>
+        <button class="fo-opt" onclick="foAnswer('goal','plants_safe',this,'q9')"><span class="fo-circle"></span>Comenzar a comer más plantas de forma segura y personalizada</button>
+        <button class="fo-opt" onclick="foAnswer('goal','prevent',this,'q9')"><span class="fo-circle"></span>Mejorar mi salud a largo plazo sin depender de medicamentos</button>
+      </div>
+    </div>
+
+    <!-- ── Q9: Deep WHY ── -->
+    <div id="fo-q9" class="fo-screen fo-has-prog">
+      <p class="fo-label">Pregunta 9 de 10</p>
+      <h2 class="fo-q">¿Por qué esto es importante para ti ahora?</h2>
+      <div class="fo-opts">
+        <button class="fo-opt" onclick="foAnswer('why','family',this,'q10')"><span class="fo-circle"></span>Por mi familia — quiero estar presente y con energía para ellos</button>
+        <button class="fo-opt" onclick="foAnswer('why','scare',this,'q10')"><span class="fo-circle"></span>Me asustó algo reciente: un examen, un síntoma, o ver a alguien cercano enfermarse</button>
+        <button class="fo-opt" onclick="foAnswer('why','milestone',this,'q10')"><span class="fo-circle"></span>Cumplí años y decidí tomar el control de mi salud de verdad</button>
+        <button class="fo-opt" onclick="foAnswer('why','tired_bad',this,'q10')"><span class="fo-circle"></span>Estoy cansada de no sentirme bien — necesito un cambio real ahora</button>
+      </div>
+    </div>
+
+    <!-- ── Q10: Readiness ── -->
+    <div id="fo-q10" class="fo-screen fo-has-prog">
+      <p class="fo-label">Pregunta 10 de 10</p>
+      <h2 class="fo-q">¿Estás lista para comprometerte a hacer cambios reales en las próximas semanas?</h2>
+      <div class="fo-opts">
+        <button class="fo-opt" onclick="foAnswer('readiness','ready',this,'contact')"><span class="fo-circle"></span>Sí — solo necesito la guía correcta para saber por dónde empezar</button>
+        <button class="fo-opt" onclick="foAnswer('readiness','doubts',this,'contact')"><span class="fo-circle"></span>Estoy interesada pero todavía tengo algunas dudas</button>
+        <button class="fo-opt" onclick="foAnswer('readiness','more_info',this,'contact')"><span class="fo-circle"></span>Quiero informarme más antes de tomar una decisión</button>
+      </div>
+    </div>
+
+    <!-- ── Contact ── -->
+    <div id="fo-contact" class="fo-screen fo-has-prog" style="justify-content:center;min-height:100dvh;">
+      <h2 class="fo-q" style="margin-bottom:8px;">Casi listo — ¿dónde te enviamos tu resumen personalizado?</h2>
+      <p style="font-size:0.88rem;color:#6A6A65;margin-bottom:26px;font-family:'Satoshi',sans-serif;">Sin spam. Solo lo que necesitas para tu sesión.</p>
+      <form id="fo-form" onsubmit="foSubmit(event)" style="display:flex;flex-direction:column;gap:14px;">
+        <div>
+          <label class="fo-lbl" for="fo-name">Tu nombre</label>
+          <input id="fo-name" class="fo-inp" type="text" placeholder="Por ej. María" autocomplete="given-name" required />
+        </div>
+        <div>
+          <label class="fo-lbl" for="fo-email">Email</label>
+          <input id="fo-email" class="fo-inp" type="email" placeholder="tu@email.com" autocomplete="email" required />
+        </div>
+        <div>
+          <label class="fo-lbl" for="fo-phone">WhatsApp <span style="font-weight:400;color:#9A9A95;">(opcional)</span></label>
+          <input id="fo-phone" class="fo-inp" type="tel" placeholder="+56 9 1234 5678" autocomplete="tel" />
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-top:4px;">
+          <input type="checkbox" id="fo-consent" style="width:17px;height:17px;accent-color:#2B4A39;flex-shrink:0;margin-top:2px;cursor:pointer;" required />
+          <label for="fo-consent" style="font-size:12px;color:#9A9A95;line-height:1.5;font-family:'Satoshi',sans-serif;cursor:pointer;">Acepto recibir información sobre la sesión de Dra. Catalina Lefort.</label>
+        </div>
+        <button type="submit" class="fo-btn-primary" style="margin-top:6px;">Ver mis resultados →</button>
+        <p style="text-align:center;font-size:11px;color:#9A9A95;font-family:'Satoshi',sans-serif;">Tu información es privada y nunca será compartida.</p>
+      </form>
+    </div>
+
+    <!-- ── Results ── -->
+    <div id="fo-results" class="fo-screen" style="padding-top:40px;">
+      <span style="display:inline-flex;align-items:center;gap:6px;background:#E8F0EB;color:#2B4A39;border-radius:99px;padding:5px 13px;font-size:11px;font-weight:600;margin-bottom:18px;font-family:'Satoshi',sans-serif;">✓ Evaluación completada</span>
+      <h2 id="fo-result-headline" class="fo-q" style="margin-bottom:12px;font-size:clamp(1.3rem,4vw,1.75rem);"></h2>
+      <p style="font-size:0.92rem;color:#6A6A65;line-height:1.65;margin-bottom:22px;font-family:'Satoshi',sans-serif;">
+        En una sesión de 60 minutos con la Dra. Catalina Lefort, saldrás con un plan <strong style="color:#1C1C1A;">claro y personalizado</strong> — no consejos genéricos.
+      </p>
+      <div class="fo-results-card">
+        <p style="font-size:10px;font-weight:700;color:#9A9A95;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px;font-family:'Satoshi',sans-serif;">Esto es lo que recibirás</p>
+        <div class="fo-check-item"><div class="fo-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2B4A39" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span style="font-size:0.88rem;color:#6A6A65;font-family:'Satoshi',sans-serif;">Interpretación de tus exámenes, valor por valor</span></div>
+        <div class="fo-check-item"><div class="fo-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2B4A39" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span style="font-size:0.88rem;color:#6A6A65;font-family:'Satoshi',sans-serif;">Plan de alimentación personalizado según tu historial médico</span></div>
+        <div class="fo-check-item"><div class="fo-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2B4A39" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span style="font-size:0.88rem;color:#6A6A65;font-family:'Satoshi',sans-serif;">Identificación de deficiencias: B12, vitamina D, hierro, omega-3</span></div>
+        <div class="fo-check-item"><div class="fo-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#2B4A39" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span style="font-size:0.88rem;color:#6A6A65;font-family:'Satoshi',sans-serif;">Plan de acción de 90 días claro y accionable</span></div>
+      </div>
+      <div style="background:#E8F0EB;border-radius:14px;padding:16px 20px;margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <div>
+          <p style="font-size:12px;color:#6A6A65;font-family:'Satoshi',sans-serif;">Sesión 1:1 · Evaluación Integral de Salud</p>
+          <p style="font-size:11px;color:#9A9A95;margin-top:2px;font-family:'Satoshi',sans-serif;">60 min · Online · Personalizada</p>
+        </div>
+        <p style="font-size:1.1rem;font-weight:700;color:#2B4A39;font-family:'Satoshi',sans-serif;">$59.91 USD</p>
+      </div>
+      <p style="text-align:center;font-size:12px;color:#9A9A95;margin-bottom:16px;font-family:'Satoshi',sans-serif;">Médica especialista · Consulta online · Sin listas de espera</p>
+      <a id="fo-book-btn" href="https://nas.io/dracatalinalefort/sessions/medicina.general" target="_blank" rel="noopener" class="fo-btn-primary" style="margin-bottom:12px;text-decoration:none;">
+        Reservar mi sesión
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a id="fo-guide-btn" href="https://nas.io/dracatalinalefort" target="_blank" rel="noopener" class="fo-btn-outline" style="display:none;margin-bottom:20px;text-decoration:none;">Descarga la guía gratuita primero</a>
+      <p style="text-align:center;font-size:12px;color:#9A9A95;line-height:1.6;font-family:'Satoshi',sans-serif;">¿Tienes preguntas? Escríbeme en Instagram · <strong>@dra.catalinalefort</strong></p>
+    </div>
+
+  </div><!-- /#fo -->
+
+
+  <!-- ─── NAVIGATION ─────────────────────────────────────────────────── -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-cream/88 backdrop-blur-md border-b border-camel-light/50">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10 flex items-center justify-between h-[64px]">
+      <a href="#" class="font-serif text-[1.35rem] text-forest font-medium tracking-tight">Dra. Catalina</a>
+      <div class="hidden md:flex items-center gap-7">
+        <a href="#method"   class="nav-link text-sm text-muted font-medium">Method</a>
+        <a href="#session"  class="nav-link text-sm text-muted font-medium">How it works</a>
+        <a href="#program"  class="nav-link text-sm text-muted font-medium">Sessions</a>
+        <a href="#quiz"     class="nav-link text-sm text-muted font-medium">Quiz</a>
+        <a href="#faq"      class="nav-link text-sm text-muted font-medium">FAQ</a>
+      </div>
+      <a href="https://nas.io/dracatalinalefort/sessions/medicina.general" target="_blank" rel="noopener" class="btn-forest bg-forest text-cream text-sm font-medium px-5 py-2.5 rounded-full">
+        Book a 1-on-1 call
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ─── HERO ──────────────────────────────────────────────────────── -->
+  <section class="min-h-[100dvh] pt-[64px] grid lg:grid-cols-[55%_45%] overflow-hidden">
+
+    <!-- LEFT: copy -->
+    <div class="flex flex-col justify-center px-5 lg:pl-16 xl:pl-24 py-20 lg:py-0">
+
+      <span class="anim-fade-up inline-flex items-center gap-2.5 text-[11px] font-medium uppercase tracking-[0.18em] text-forest/65 mb-7">
+        <span class="inline-block w-9 h-px bg-forest/35"></span>
+        Lifestyle Medicine · Plant-Based Nutrition
+      </span>
+
+      <h1 class="anim-fade-up delay-1 font-serif text-[2.9rem] lg:text-[3.7rem] xl:text-[4.4rem] leading-[1.04] tracking-tight text-charcoal mb-7 max-w-[15ch]">
+        Eat more plants.<br/>
+        Sleep better.<br/>
+        <em class="text-forest">Feel like yourself<br/>again.</em>
+      </h1>
+
+      <p class="anim-fade-up delay-2 text-[1.05rem] text-muted leading-relaxed max-w-[50ch] mb-10">
+        I'm a doctor who actually talks about what you eat. Together we'll find the right plants for your body — safely, without deficiency, without overwhelm.
+      </p>
+
+      <div class="anim-fade-up delay-3 flex flex-col sm:flex-row gap-4 mb-14">
+        <a href="#book" class="btn-forest bg-forest text-cream font-medium px-7 py-[14px] rounded-full text-sm text-center">
+          Book your first session
+        </a>
+        <button onclick="foOpen()" class="btn-ghost flex items-center justify-center sm:justify-start gap-2 text-sm font-medium text-charcoal" style="background:none;border:none;cursor:pointer;padding:0;font-family:inherit;">
+          Take the 60-second quiz
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </button>
+      </div>
+
+      <!-- Trust signals (no fake stats) -->
+      <div class="anim-fade-up delay-4 flex flex-wrap gap-6 pt-8 border-t border-camel-light/70">
+        <div class="flex items-center gap-2">
+          <div class="w-1.5 h-1.5 rounded-full bg-forest"></div>
+          <span class="text-[11px] text-muted-light uppercase tracking-widest font-medium">Licensed MD</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-1.5 h-1.5 rounded-full bg-forest"></div>
+          <span class="text-[11px] text-muted-light uppercase tracking-widest font-medium">6 lifestyle pillars</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-1.5 h-1.5 rounded-full bg-forest"></div>
+          <span class="text-[11px] text-muted-light uppercase tracking-widest font-medium">Evidence-based</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-1.5 h-1.5 rounded-full bg-forest"></div>
+          <span class="text-[11px] text-muted-light uppercase tracking-widest font-medium">100% online</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: image -->
+    <div class="relative hidden lg:block">
+      <div class="img-overlay absolute inset-0 z-10"></div>
+      <img
+        src="images/catalina-hero.jpg"
+        alt="Dra. Catalina Lefort, lifestyle medicine physician"
+        class="w-full h-full object-cover object-top"
+      />
+
+      <!-- Floating session card -->
+      <div class="float absolute bottom-28 left-6 z-20 bg-white/95 backdrop-blur-sm border border-camel-light/40 rounded-[18px] p-4 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.09)] max-w-[230px]">
+        <div class="flex items-center gap-3 mb-3">
+          <div class="w-9 h-9 rounded-full bg-forest-light flex items-center justify-center">
+            <svg class="w-4 h-4 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
+          </div>
+          <div>
+            <div class="text-xs font-semibold text-charcoal">First session</div>
+            <div class="text-[10px] text-muted">Now available · Online</div>
+          </div>
+        </div>
+        <p class="text-[11.5px] text-charcoal leading-relaxed">60 min · Full lifestyle review · Personalized plan · $59.91 USD</p>
+        <a href="https://nas.io/dracatalinalefort" target="_blank" rel="noopener" class="mt-3 block text-center text-[11px] font-semibold text-forest bg-forest-light rounded-xl py-2">
+          Book on NAS.io →
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── PILLARS BAR ────────────────────────────────────────────────── -->
+  <div class="bg-forest overflow-hidden py-4">
+    <div class="flex whitespace-nowrap">
+      <div class="marquee-track flex items-center gap-0">
+        <span class="inline-flex items-center gap-10 px-10">
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Nutrition</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Sleep</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Movement</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Stress management</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Social connection</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Avoiding harmful substances</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Nutrition</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Sleep</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Movement</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Stress management</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Social connection</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Avoiding harmful substances</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+        </span>
+        <span class="inline-flex items-center gap-10 px-10" aria-hidden="true">
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Nutrition</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Sleep</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Movement</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Stress management</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Social connection</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+          <span class="text-cream/70 font-serif text-sm font-medium italic">Avoiding harmful substances</span>
+          <span class="text-cream/25 text-lg">&#10022;</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─── PROBLEM ───────────────────────────────────────────────────── -->
+  <section class="py-24 lg:py-32 px-5 lg:px-10">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1fr] gap-16 lg:gap-28 items-start">
+
+      <!-- Left (sticky) -->
+      <div class="lg:sticky lg:top-28">
+        <span class="text-[11px] font-medium uppercase tracking-[0.18em] text-forest/55 mb-5 block">You're not the problem</span>
+        <h2 class="font-serif text-[2.4rem] lg:text-[3rem] leading-[1.1] tracking-tight mb-8 max-w-[20ch]">
+          The reason nothing has stuck isn't your willpower.
+        </h2>
+        <p class="text-muted leading-relaxed mb-5 max-w-[48ch]">
+          Most doctors have 10–15 minutes with you. That's enough time for a prescription — not enough to understand why you're always tired, or how to change it.
+        </p>
+        <p class="text-muted leading-relaxed max-w-[48ch]">
+          Lifestyle medicine works differently. <strong class="text-charcoal font-medium">We look at everything</strong> — what you eat, how you sleep, how you move, how you manage stress — and we find the habits that are actually holding you back.
+        </p>
+        <a href="#session" class="btn-ghost inline-flex items-center gap-2 text-sm font-medium text-forest mt-8">
+          See how a session works
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Right: symptom grid -->
+      <div class="grid grid-cols-2 gap-3">
+        <div class="spotlight-card bg-white border border-camel-light/50 rounded-2xl p-5 card-lift">
+          <div class="w-8 h-8 bg-forest-light rounded-full flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <span class="text-sm text-charcoal font-medium block">Always tired</span>
+          <span class="text-xs text-muted mt-1 block">Even after a full night's sleep</span>
+        </div>
+        <div class="spotlight-card bg-white border border-camel-light/50 rounded-2xl p-5 card-lift">
+          <div class="w-8 h-8 bg-forest-light rounded-full flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636"/></svg>
+          </div>
+          <span class="text-sm text-charcoal font-medium block">Scared to eat less meat</span>
+          <span class="text-xs text-muted mt-1 block">Worried about B12, protein or iron</span>
+        </div>
+        <div class="spotlight-card bg-white border border-camel-light/50 rounded-2xl p-5 card-lift">
+          <div class="w-8 h-8 bg-forest-light rounded-full flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <span class="text-sm text-charcoal font-medium block">Lab results came back off</span>
+          <span class="text-xs text-muted mt-1 block">And no one explained what to do</span>
+        </div>
+        <div class="spotlight-card bg-white border border-camel-light/50 rounded-2xl p-5 card-lift">
+          <div class="w-8 h-8 bg-forest-light rounded-full flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
+          </div>
+          <span class="text-sm text-charcoal font-medium block">Tried every diet</span>
+          <span class="text-xs text-muted mt-1 block">None of them felt sustainable</span>
+        </div>
+        <div class="spotlight-card bg-white border border-camel-light/50 rounded-2xl p-5 card-lift">
+          <div class="w-8 h-8 bg-forest-light rounded-full flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/></svg>
+          </div>
+          <span class="text-sm text-charcoal font-medium block">Don't know where to start</span>
+          <span class="text-xs text-muted mt-1 block">With eating more plants</span>
+        </div>
+        <div class="spotlight-card bg-white border border-camel-light/50 rounded-2xl p-5 card-lift">
+          <div class="w-8 h-8 bg-forest-light rounded-full flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          </div>
+          <span class="text-sm text-charcoal font-medium block">Poor sleep quality</span>
+          <span class="text-xs text-muted mt-1 block">Waking at 3am, restless nights</span>
+        </div>
+        <div class="spotlight-card bg-white border border-camel-light/50 rounded-2xl p-5 card-lift">
+          <div class="w-8 h-8 bg-forest-light rounded-full flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <span class="text-sm text-charcoal font-medium block">Your doctor prescribes</span>
+          <span class="text-xs text-muted mt-1 block">But never asks about what you eat</span>
+        </div>
+        <div class="spotlight-card bg-white border border-camel-light/50 rounded-2xl p-5 card-lift">
+          <div class="w-8 h-8 bg-forest-light rounded-full flex items-center justify-center mb-4">
+            <svg class="w-4 h-4 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+          </div>
+          <span class="text-sm text-charcoal font-medium block">Want to prevent disease</span>
+          <span class="text-xs text-muted mt-1 block">What you've seen in your family</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── BEFORE / AFTER ────────────────────────────────────────────── -->
+  <section class="overflow-hidden">
+    <div class="max-w-full lg:grid lg:grid-cols-2">
+
+      <!-- Left: before -->
+      <div class="bg-[#EDEAE3] px-8 lg:pl-20 xl:pl-28 lg:pr-16 py-24 lg:py-32">
+        <span class="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-light mb-7 block">Before</span>
+        <h3 class="font-serif text-[2rem] lg:text-[2.3rem] text-charcoal/65 leading-tight tracking-tight mb-10">
+          What you've been<br/>told to do.
+        </h3>
+        <div class="space-y-5 max-w-[38ch]">
+          <div class="flex items-start gap-3.5">
+            <svg class="w-4 h-4 text-muted-light mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span class="text-sm text-muted leading-relaxed">"Eat less, move more" — with no explanation of why it isn't working</span>
+          </div>
+          <div class="flex items-start gap-3.5">
+            <svg class="w-4 h-4 text-muted-light mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span class="text-sm text-muted leading-relaxed">Avoid plants — you'll be deficient in B12, protein, or iron</span>
+          </div>
+          <div class="flex items-start gap-3.5">
+            <svg class="w-4 h-4 text-muted-light mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span class="text-sm text-muted leading-relaxed">Lab results "in range" — so there's nothing to discuss</span>
+          </div>
+          <div class="flex items-start gap-3.5">
+            <svg class="w-4 h-4 text-muted-light mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span class="text-sm text-muted leading-relaxed">Generic meal plans not built around your actual life</span>
+          </div>
+          <div class="flex items-start gap-3.5">
+            <svg class="w-4 h-4 text-muted-light mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+            <span class="text-sm text-muted leading-relaxed">A 10-minute appointment. A prescription. See you in 3 months.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: after Catalina -->
+      <div class="bg-forest px-8 lg:pr-20 xl:pr-28 lg:pl-16 py-24 lg:py-32">
+        <span class="text-[11px] font-medium uppercase tracking-[0.18em] text-cream/40 mb-7 block">With Catalina</span>
+        <h3 class="font-serif text-[2rem] lg:text-[2.3rem] text-cream leading-tight tracking-tight mb-10">
+          What actually<br/>changes.
+        </h3>
+        <div class="space-y-5 max-w-[38ch]">
+          <div class="flex items-start gap-3.5">
+            <svg class="w-4 h-4 text-camel mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span class="text-sm text-cream/80 leading-relaxed">You just need to plan your meals — and I'll show you exactly how</span>
+          </div>
+          <div class="flex items-start gap-3.5">
+            <svg class="w-4 h-4 text-camel mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span class="text-sm text-cream/80 leading-relaxed">Only B12 needs supplementing — we handle it together, based on your labs</span>
+          </div>
+          <div class="flex items-start gap-3.5">
+            <svg class="w-4 h-4 text-camel mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span class="text-sm text-cream/80 leading-relaxed">60 minutes to understand your full picture — not 10</span>
+          </div>
+          <div class="flex items-start gap-3.5">
+            <svg class="w-4 h-4 text-camel mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span class="text-sm text-cream/80 leading-relaxed">A safe, gradual transition — at a pace that fits your real life</span>
+          </div>
+          <div class="flex items-start gap-3.5">
+            <svg class="w-4 h-4 text-camel mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span class="text-sm text-cream/80 leading-relaxed">If you need medication, I'll prescribe it. I'm still a real doctor.</span>
+          </div>
+        </div>
+        <a href="#book" class="btn-forest inline-block mt-10 bg-cream text-forest text-sm font-medium px-7 py-3.5 rounded-full">
+          Book your first session
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── EMOTIONAL STRIP ─────────────────────────────────────────── -->
+  <section class="py-16 lg:py-20 px-5 lg:px-10 bg-cream-dark overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <p class="text-center text-[11px] font-medium uppercase tracking-[0.18em] text-muted-light mb-10">This is what feeling better actually looks like</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
+        <div class="relative overflow-hidden rounded-2xl aspect-[3/2]">
+          <img src="images/women-energy.jpg"
+            alt="Woman with energy, laughing in her kitchen"
+            class="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent"></div>
+          <span class="absolute bottom-4 left-4 text-[11px] font-medium text-cream/90 uppercase tracking-wider">More energy</span>
+        </div>
+        <div class="relative overflow-hidden rounded-2xl aspect-[3/2]">
+          <img src="images/women-morning.jpg"
+            alt="Woman waking up refreshed and glowing"
+            class="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent"></div>
+          <span class="absolute bottom-4 left-4 text-[11px] font-medium text-cream/90 uppercase tracking-wider">Better sleep</span>
+        </div>
+        <div class="relative overflow-hidden rounded-2xl aspect-[3/2]">
+          <img src="images/women-laughing.jpg"
+            alt="Women laughing together, full of life"
+            class="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent"></div>
+          <span class="absolute bottom-4 left-4 text-[11px] font-medium text-cream/90 uppercase tracking-wider">Back to yourself</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── METHOD ────────────────────────────────────────────────────── -->
+  <section id="method" class="py-24 lg:py-32 bg-forest">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+
+      <div class="max-w-[42ch] mb-16">
+        <span class="text-[11px] font-medium uppercase tracking-[0.18em] text-cream/45 mb-5 block">The six pillars</span>
+        <h2 class="font-serif text-[2.5rem] lg:text-[3.2rem] leading-[1.08] tracking-tight text-cream">
+          Health isn't one thing.<br/>It's how everything connects.
+        </h2>
+      </div>
+
+      <div class="space-y-0">
+
+        <!-- Pillar 1 -->
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-20 items-center py-16 border-t border-cream/10">
+          <div>
+            <span class="font-serif text-[5rem] lg:text-[6rem] text-cream/10 font-medium leading-none select-none">01</span>
+          </div>
+          <div class="grid lg:grid-cols-[1fr_1fr] gap-10 items-center">
+            <div>
+              <h3 class="font-serif text-[1.8rem] lg:text-[2rem] text-cream leading-tight mb-4 tracking-tight">
+                Understanding your lifestyle
+              </h3>
+              <p class="text-cream/60 leading-relaxed text-[0.95rem]">
+                Before anything else, I want to know your life. What you eat, how you sleep, your stress, your movement, your labs. Everything. Most doctors have 10 minutes with you. Our first session is 60 — and I use all of it.
+              </p>
+            </div>
+            <div class="relative">
+              <img src="images/catalina-intake.jpg" alt="Full lifestyle intake" class="rounded-2xl w-full object-cover h-56 lg:h-64 opacity-80"/>
+              <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-cream/10"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-20 items-center py-16 border-t border-cream/10">
+          <div>
+            <span class="font-serif text-[5rem] lg:text-[6rem] text-cream/10 font-medium leading-none select-none">02</span>
+          </div>
+          <div class="grid lg:grid-cols-[1fr_1fr] gap-10 items-center">
+            <div class="lg:order-2">
+              <h3 class="font-serif text-[1.8rem] lg:text-[2rem] text-cream leading-tight mb-4 tracking-tight">
+                Your plant-forward plan
+              </h3>
+              <p class="text-cream/60 leading-relaxed text-[0.95rem]">
+                No generic handouts. I'll find the right plants for your body — based on your specific labs, your current diet, and what you actually enjoy eating. Most people only need one supplement: B12. We figure out the rest together.
+              </p>
+            </div>
+            <div class="relative lg:order-1">
+              <img src="images/catalina-plan.jpg" alt="Plant-based nutrition plan" class="rounded-2xl w-full object-cover h-56 lg:h-64 opacity-80"/>
+              <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-cream/10"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-20 items-center py-16 border-t border-cream/10">
+          <div>
+            <span class="font-serif text-[5rem] lg:text-[6rem] text-cream/10 font-medium leading-none select-none">03</span>
+          </div>
+          <div class="grid lg:grid-cols-[1fr_1fr] gap-10 items-center">
+            <div>
+              <h3 class="font-serif text-[1.8rem] lg:text-[2rem] text-cream leading-tight mb-4 tracking-tight">
+                Habits that actually stick
+              </h3>
+              <p class="text-cream/60 leading-relaxed text-[0.95rem]">
+                I help you change the habits that are making you feel bad — so you can feel better. Not through willpower. Through understanding. Sustainable changes that fit into your real life, not an idealized version of it.
+              </p>
+            </div>
+            <div class="relative">
+              <img src="images/catalina-habits-sporty.jpg" alt="Sustainable habit change" class="rounded-2xl w-full object-cover h-56 lg:h-64 opacity-80"/>
+              <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-cream/10"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── HOW A SESSION WORKS ───────────────────────────────────────── -->
+  <section id="session" class="py-24 lg:py-32 px-5 lg:px-10">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="max-w-[40ch] mb-20">
+        <span class="text-[11px] font-medium uppercase tracking-[0.18em] text-forest/55 mb-5 block">How it works</span>
+        <h2 class="font-serif text-[2.4rem] lg:text-[3rem] leading-[1.1] tracking-tight">
+          One session.<br/><em>A lot of clarity.</em>
+        </h2>
+      </div>
+
+      <!-- 3-step process — dividers, no cards -->
+      <div class="grid lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-camel-light/50">
+
+        <!-- Step 1 -->
+        <div class="py-10 lg:py-0 lg:pr-16 xl:pr-20">
+          <div class="mb-6">
+            <span class="font-serif text-[4rem] text-forest/10 font-medium leading-none select-none">01</span>
+          </div>
+          <h3 class="font-serif text-[1.35rem] text-charcoal leading-tight tracking-tight mb-4">I ask you everything</h3>
+          <p class="text-muted text-sm leading-relaxed mb-5">
+            Before anything else, I want to understand your life. Your daily routine, what you eat, how you sleep, your stress, how you move. The labs you've had. Most doctors have 10 minutes. Our session is 60 — and I use every single one.
+          </p>
+          <div class="inline-flex items-center gap-2 text-xs text-forest font-medium">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            60 minutes · Online · No travel
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="py-10 lg:py-0 lg:px-16 xl:px-20">
+          <div class="mb-6">
+            <span class="font-serif text-[4rem] text-forest/10 font-medium leading-none select-none">02</span>
+          </div>
+          <h3 class="font-serif text-[1.35rem] text-charcoal leading-tight tracking-tight mb-4">I build your personal plan</h3>
+          <p class="text-muted text-sm leading-relaxed mb-5">
+            Based on everything we discussed — and your labs — I identify the habits holding you back and show you exactly how to shift them. If you want to eat more plants, I'll find the right ones for your body. Usually, the only supplement you actually need is B12.
+          </p>
+          <div class="inline-flex items-center gap-2 text-xs text-forest font-medium">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Lab review included · No guessing
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="py-10 lg:py-0 lg:pl-16 xl:pl-20">
+          <div class="mb-6">
+            <span class="font-serif text-[4rem] text-forest/10 font-medium leading-none select-none">03</span>
+          </div>
+          <h3 class="font-serif text-[1.35rem] text-charcoal leading-tight tracking-tight mb-4">You leave with clarity</h3>
+          <p class="text-muted text-sm leading-relaxed mb-5">
+            You won't get a generic pamphlet. You'll know what to eat, what to change, and why. And if you need medication on top of lifestyle changes, I'll prescribe it. I'm still a real doctor — I just also talk about what's on your plate.
+          </p>
+          <div class="inline-flex items-center gap-2 text-xs text-forest font-medium">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 13.5l3 3m0 0l3-3m-3 3v-6m1.06-4.19l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"/></svg>
+            Personalized plan · Can prescribe
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA after steps -->
+      <div class="mt-16 pt-12 border-t border-camel-light/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <p class="font-serif text-[1.2rem] text-charcoal max-w-[40ch] leading-snug">
+          "You can make a safe transition from eating meat to plant-based. With me, you do it safely."
+        </p>
+        <a href="#book" class="btn-forest bg-forest text-cream font-medium px-7 py-3.5 rounded-full text-sm shrink-0">
+          Book your session →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── ABOUT CATALINA ────────────────────────────────────────────── -->
+  <section class="py-24 lg:py-32 px-5 lg:px-10 bg-cream-dark">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1fr] gap-16 lg:gap-24 items-center">
+
+      <!-- Image -->
+      <div class="relative">
+        <img
+          src="images/Screenshot 2026-04-06 at 05.34.53.png"
+          alt="Dra. Catalina Lefort, Lifestyle Medicine Physician"
+          class="rounded-3xl w-full object-cover h-[520px] lg:h-[620px] object-top"
+        />
+        <!-- Credential badge -->
+        <div class="absolute top-8 right-[-12px] lg:right-[-20px] bg-cream border border-camel-light/60 rounded-2xl p-4 shadow-[0_16px_32px_-8px_rgba(0,0,0,0.07)]">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 bg-forest rounded-full flex items-center justify-center">
+              <svg class="w-4 h-4 text-cream" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+            </div>
+            <div>
+              <div class="text-[11px] font-semibold text-charcoal">Licensed MD</div>
+              <div class="text-[10px] text-muted">Lifestyle Medicine</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div>
+        <span class="text-[11px] font-medium uppercase tracking-[0.18em] text-forest/55 mb-5 block">Meet Catalina</span>
+        <h2 class="font-serif text-[2.4rem] lg:text-[2.9rem] leading-[1.1] tracking-tight mb-7">
+          "I eat this way myself.<br/><em>I live what I teach.</em>"
+        </h2>
+        <div class="space-y-5 text-muted leading-relaxed max-w-[50ch]">
+          <p>
+            I'm a lifestyle medicine physician — which means I use changes in how you eat, sleep, move, and manage stress to prevent and treat chronic disease. Not instead of medication. Alongside it, when you need it.
+          </p>
+          <p>
+            I chose this specialty because I believe food is medicine — but only when someone shows you exactly how to use it for <strong class="text-charcoal font-medium">your body, your labs, your life</strong>. Most doctors don't have time for that conversation. I built my practice around it.
+          </p>
+          <p>
+            I also eat plant-based myself. So when I tell you a transition is safe and sustainable, I'm not reading from a textbook. I'm telling you from experience.
+          </p>
+        </div>
+
+        <!-- Credentials -->
+        <div class="grid grid-cols-2 gap-3 mt-10">
+          <div class="border-l-2 border-forest pl-4">
+            <div class="text-xs font-semibold text-charcoal">Lifestyle Medicine MD</div>
+            <div class="text-[11px] text-muted mt-0.5">Prevention &amp; chronic disease</div>
+          </div>
+          <div class="border-l-2 border-camel pl-4">
+            <div class="text-xs font-semibold text-charcoal">Plant-based specialist</div>
+            <div class="text-[11px] text-muted mt-0.5">Safe transitions, no fear</div>
+          </div>
+          <div class="border-l-2 border-forest pl-4">
+            <div class="text-xs font-semibold text-charcoal">Licensed to prescribe</div>
+            <div class="text-[11px] text-muted mt-0.5">Medication when needed</div>
+          </div>
+          <div class="border-l-2 border-camel pl-4">
+            <div class="text-xs font-semibold text-charcoal">100% online</div>
+            <div class="text-[11px] text-muted mt-0.5">Available globally · Spanish</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── WHAT YOU'LL LEAVE WITH ────────────────────────────────────── -->
+  <section class="py-24 lg:py-32 px-5 lg:px-10">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="max-w-[40ch] mb-16">
+        <span class="text-[11px] font-medium uppercase tracking-[0.18em] text-forest/55 mb-5 block">The outcome</span>
+        <h2 class="font-serif text-[2.4rem] lg:text-[3rem] leading-[1.1] tracking-tight">
+          What changes after<br/><em>one session.</em>
+        </h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-camel-light/50">
+
+        <!-- Left: what brings people here -->
+        <div class="pb-12 lg:pb-0 lg:pr-16 xl:pr-24">
+          <div class="text-[11px] font-medium uppercase tracking-[0.18em] text-muted-light mb-8 block">What brings people here</div>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-5 h-5 rounded-full border border-camel-light mt-0.5 shrink-0 flex items-center justify-center">
+                <div class="w-1.5 h-1.5 rounded-full bg-muted-light"></div>
+              </div>
+              <span class="text-sm text-muted leading-relaxed">Scared to go plant-based — worried about deficiencies</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-5 h-5 rounded-full border border-camel-light mt-0.5 shrink-0 flex items-center justify-center">
+                <div class="w-1.5 h-1.5 rounded-full bg-muted-light"></div>
+              </div>
+              <span class="text-sm text-muted leading-relaxed">Always tired — and no one can explain why</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-5 h-5 rounded-full border border-camel-light mt-0.5 shrink-0 flex items-center justify-center">
+                <div class="w-1.5 h-1.5 rounded-full bg-muted-light"></div>
+              </div>
+              <span class="text-sm text-muted leading-relaxed">Lab results that worried them, with no guidance on what to do</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-5 h-5 rounded-full border border-camel-light mt-0.5 shrink-0 flex items-center justify-center">
+                <div class="w-1.5 h-1.5 rounded-full bg-muted-light"></div>
+              </div>
+              <span class="text-sm text-muted leading-relaxed">A doctor who prescribes — but never asks about food</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-5 h-5 rounded-full border border-camel-light mt-0.5 shrink-0 flex items-center justify-center">
+                <div class="w-1.5 h-1.5 rounded-full bg-muted-light"></div>
+              </div>
+              <span class="text-sm text-muted leading-relaxed">Diets tried and abandoned — none of them lasted</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-5 h-5 rounded-full border border-camel-light mt-0.5 shrink-0 flex items-center justify-center">
+                <div class="w-1.5 h-1.5 rounded-full bg-muted-light"></div>
+              </div>
+              <span class="text-sm text-muted leading-relaxed">Wanting to prevent disease — but not knowing how to start</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: what they leave with -->
+        <div class="pt-12 lg:pt-0 lg:pl-16 xl:pl-24">
+          <div class="text-[11px] font-medium uppercase tracking-[0.18em] text-forest/55 mb-8 block">What they leave with</div>
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <svg class="w-5 h-5 text-forest mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm text-charcoal leading-relaxed">A clear supplement plan — usually just B12, based on your labs</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <svg class="w-5 h-5 text-forest mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm text-charcoal leading-relaxed">The exact habits draining their energy — and how to fix them</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <svg class="w-5 h-5 text-forest mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm text-charcoal leading-relaxed">Full lab interpretation + a personalized action plan</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <svg class="w-5 h-5 text-forest mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm text-charcoal leading-relaxed">A doctor who talks about food — and prescribes when needed</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <svg class="w-5 h-5 text-forest mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm text-charcoal leading-relaxed">Habit changes that fit their actual life — no extreme protocols</span>
+            </div>
+            <div class="flex items-start gap-4">
+              <svg class="w-5 h-5 text-forest mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span class="text-sm text-charcoal leading-relaxed">A step-by-step plant transition — at a pace they can actually keep</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── SESSIONS / PRICING ────────────────────────────────────────── -->
+  <section id="program" class="py-24 lg:py-32 px-5 lg:px-10 bg-cream-dark">
+    <div class="max-w-7xl mx-auto">
+
+      <div class="max-w-[38ch] mb-16">
+        <span class="text-[11px] font-medium uppercase tracking-[0.18em] text-forest/55 mb-5 block">Sessions</span>
+        <h2 class="font-serif text-[2.4rem] lg:text-[3rem] leading-[1.1] tracking-tight">
+          Choose where<br/>to start.
+        </h2>
+      </div>
+
+      <!-- Row 1: Featured hero card + guarantee panel -->
+      <div class="grid lg:grid-cols-[1.8fr_1fr] gap-6 mb-6">
+
+        <!-- Featured: First session -->
+        <div class="bg-forest rounded-3xl p-10 lg:p-12 card-lift relative overflow-hidden">
+          <div class="absolute top-8 right-8 bg-camel text-cream text-[10px] font-semibold uppercase tracking-widest px-3 py-1.5 rounded-full">
+            Start here
+          </div>
+          <div class="grid lg:grid-cols-[1fr_1fr] gap-10 items-start">
+            <div>
+              <div class="text-xs uppercase tracking-widest text-cream/45 mb-4 font-medium">First session</div>
+              <div class="font-serif text-[3.5rem] text-cream font-medium leading-none mb-1">$59.91</div>
+              <div class="text-xs text-cream/45 mb-2">USD · one-time</div>
+              <div class="text-xs text-cream/35 mb-8">No account needed — just pick a time</div>
+              <a href="#book" class="btn-forest inline-block bg-cream text-forest text-sm font-medium rounded-full px-7 py-3.5">
+                Book your session →
+              </a>
+            </div>
+            <div class="space-y-3.5">
+              <div class="flex items-start gap-3 text-sm text-cream/75">
+                <svg class="w-4 h-4 text-camel mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                60-minute online consultation
+              </div>
+              <div class="flex items-start gap-3 text-sm text-cream/75">
+                <svg class="w-4 h-4 text-camel mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Full lifestyle + habit review
+              </div>
+              <div class="flex items-start gap-3 text-sm text-cream/75">
+                <svg class="w-4 h-4 text-camel mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Lab results reviewed + explained
+              </div>
+              <div class="flex items-start gap-3 text-sm text-cream/75">
+                <svg class="w-4 h-4 text-camel mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Personalized plant-based plan
+              </div>
+              <div class="flex items-start gap-3 text-sm text-cream/75">
+                <svg class="w-4 h-4 text-camel mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Supplement recommendations
+              </div>
+              <div class="flex items-start gap-3 text-sm text-cream/75">
+                <svg class="w-4 h-4 text-camel mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Prescription if needed — she's a real MD
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: guarantee + trust panel -->
+        <div class="bg-white border border-camel-light/50 rounded-3xl p-8 flex flex-col justify-between card-lift">
+          <div>
+            <div class="w-11 h-11 bg-forest-light rounded-full flex items-center justify-center mb-6">
+              <svg class="w-5 h-5 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div class="font-serif text-[1.5rem] text-charcoal leading-tight tracking-tight mb-4">No commitment.<br/>Just clarity.</div>
+            <p class="text-sm text-muted leading-relaxed">
+              The first session is standalone. You leave with a complete, personalized plan. No package required, no ongoing subscription. Continue only if it makes sense for you.
+            </p>
+          </div>
+          <div class="mt-8 pt-6 border-t border-camel-light/40 space-y-3">
+            <div class="flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-forest shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="text-xs text-muted">Booked securely on NAS.io</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-forest shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="text-xs text-muted">Video call · Your timezone</span>
+            </div>
+            <div class="flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-forest shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span class="text-xs text-muted">Spanish · Available globally</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Coming soon options -->
+      <div class="grid lg:grid-cols-2 gap-6">
+
+        <!-- Free guide -->
+        <div class="bg-white border border-camel-light/50 rounded-3xl p-8 card-lift flex flex-col">
+          <div class="mb-auto">
+            <div class="flex items-baseline justify-between mb-6">
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted mb-2 font-medium">Free resource</div>
+                <div class="font-serif text-[2.5rem] text-charcoal font-medium leading-none">Free</div>
+              </div>
+              <div class="bg-forest-light text-forest text-[10px] font-semibold uppercase tracking-widest px-3 py-1.5 rounded-full">Available now</div>
+            </div>
+            <div class="space-y-3 pt-6 border-t border-camel-light/40">
+              <div class="text-sm font-medium text-charcoal mb-1">Plant-Based con Energía</div>
+              <div class="flex items-start gap-3 text-sm text-muted">
+                <svg class="w-4 h-4 text-forest mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Practical guide to starting plant-based
+              </div>
+              <div class="flex items-start gap-3 text-sm text-muted">
+                <svg class="w-4 h-4 text-forest mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                No deficiency fear — the B12 truth
+              </div>
+              <div class="flex items-start gap-3 text-sm text-muted">
+                <svg class="w-4 h-4 text-forest mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Written by a lifestyle medicine MD
+              </div>
+            </div>
+          </div>
+          <a href="https://nas.io/dracatalinalefort" target="_blank" rel="noopener" class="btn-ghost mt-8 text-sm font-medium text-forest border border-forest/30 hover:border-forest rounded-full py-3.5 text-center transition-colors">
+            Get the free guide →
+          </a>
+        </div>
+
+        <!-- 12-day challenge -->
+        <div class="bg-white border border-camel-light/50 rounded-3xl p-8 card-lift flex flex-col">
+          <div class="mb-auto">
+            <div class="flex items-baseline justify-between mb-6">
+              <div>
+                <div class="text-xs uppercase tracking-widest text-muted mb-2 font-medium">Group program</div>
+                <div class="font-serif text-[2.5rem] text-charcoal font-medium leading-none">Soon</div>
+              </div>
+              <div class="bg-camel-light text-camel text-[10px] font-semibold uppercase tracking-widest px-3 py-1.5 rounded-full">Coming soon</div>
+            </div>
+            <div class="space-y-3 pt-6 border-t border-camel-light/40">
+              <div class="text-sm font-medium text-charcoal mb-1">12 días Plant-Based con Energía</div>
+              <div class="flex items-start gap-3 text-sm text-muted">
+                <svg class="w-4 h-4 text-forest mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                12-day practical challenge
+              </div>
+              <div class="flex items-start gap-3 text-sm text-muted">
+                <svg class="w-4 h-4 text-forest mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Group format · Catalina-led
+              </div>
+              <div class="flex items-start gap-3 text-sm text-muted">
+                <svg class="w-4 h-4 text-forest mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                Waitlist open on NAS.io
+              </div>
+            </div>
+          </div>
+          <a href="https://nas.io/dracatalinalefort" target="_blank" rel="noopener" class="btn-ghost mt-8 text-sm font-medium text-forest border border-forest/30 hover:border-forest rounded-full py-3.5 text-center transition-colors">
+            Join the waitlist →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── FAQ ──────────────────────────────────────────────────────── -->
+  <section id="faq" class="py-24 lg:py-32 px-5 lg:px-10">
+    <div class="max-w-3xl mx-auto">
+
+      <span class="text-[11px] font-medium uppercase tracking-[0.18em] text-forest/55 mb-5 block">Questions</span>
+      <h2 class="font-serif text-[2.4rem] lg:text-[2.9rem] leading-[1.1] tracking-tight mb-14">
+        Things people want<br/>to know before booking.
+      </h2>
+
+      <div class="divide-y divide-camel-light/60">
+
+        <details class="group py-6">
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <span class="font-medium text-charcoal">Do I need to be vegan to work with you?</span>
+            <svg class="w-4 h-4 text-muted group-open:rotate-45 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </summary>
+          <p class="mt-4 text-muted text-sm leading-relaxed max-w-[55ch]">
+            Not at all. You can eat meat now and that's completely fine. My approach is about helping you add more plants at a pace that works for you — not removing everything overnight. We work with where you are, not where you're "supposed" to be.
+          </p>
+        </details>
+
+        <details class="group py-6">
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <span class="font-medium text-charcoal">I'm scared I'll be deficient in B12 or protein. What do you say?</span>
+            <svg class="w-4 h-4 text-muted group-open:rotate-45 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </summary>
+          <p class="mt-4 text-muted text-sm leading-relaxed max-w-[55ch]">
+            This is the most common fear — and it's completely valid. Here's the truth: you can get most nutrients from plants if you plan your meals. The only thing most people need to supplement is B12. We'll check your labs and I'll tell you exactly what applies to your body. No guessing.
+          </p>
+        </details>
+
+        <details class="group py-6">
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <span class="font-medium text-charcoal">How is this different from seeing a regular nutritionist?</span>
+            <svg class="w-4 h-4 text-muted group-open:rotate-45 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </summary>
+          <p class="mt-4 text-muted text-sm leading-relaxed max-w-[55ch]">
+            I'm a medical doctor — which means I can read and interpret your labs, understand how your medications interact with your diet, and prescribe when needed. A nutritionist can give you a great meal plan. I give you a full medical picture and a plan that fits it.
+          </p>
+        </details>
+
+        <details class="group py-6">
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <span class="font-medium text-charcoal">Can you prescribe medication if I need it?</span>
+            <svg class="w-4 h-4 text-muted group-open:rotate-45 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </summary>
+          <p class="mt-4 text-muted text-sm leading-relaxed max-w-[55ch]">
+            Yes. Lifestyle medicine is not "instead of medication" — it's alongside it when needed. If your labs show something that requires treatment, I'll prescribe. The goal is always to use lifestyle changes to reduce dependency on medication over time, not to ignore medical reality.
+          </p>
+        </details>
+
+        <details class="group py-6">
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <span class="font-medium text-charcoal">I don't know where to start. Is that okay?</span>
+            <svg class="w-4 h-4 text-muted group-open:rotate-45 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </summary>
+          <p class="mt-4 text-muted text-sm leading-relaxed max-w-[55ch]">
+            That's exactly the right place to be. The first session is built for this. You don't need to arrive with a plan — I build it with you. All I need from you is honesty about where you are right now.
+          </p>
+        </details>
+
+        <details class="group py-6">
+          <summary class="flex items-center justify-between cursor-pointer list-none">
+            <span class="font-medium text-charcoal">Where are you based? Do I need to be in Chile?</span>
+            <svg class="w-4 h-4 text-muted group-open:rotate-45 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          </summary>
+          <p class="mt-4 text-muted text-sm leading-relaxed max-w-[55ch]">
+            I'm based in Chile, but sessions are 100% online. You can book from anywhere in the world. Sessions are conducted in Spanish.
+          </p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── QUIZ ──────────────────────────────────────────────────────── -->
+  <section id="quiz" class="py-24 lg:py-32 px-5 lg:px-10 bg-cream-dark">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.4fr] gap-16 lg:gap-24 items-start">
+
+      <!-- Left: intro -->
+      <div class="lg:sticky lg:top-28">
+        <span class="text-[11px] font-medium uppercase tracking-[0.18em] text-forest/55 mb-5 block">Quick quiz</span>
+        <h2 class="font-serif text-[2.4rem] lg:text-[2.9rem] leading-[1.1] tracking-tight mb-6">
+          Is this the right<br/>session for you?
+        </h2>
+        <p class="text-muted leading-relaxed max-w-[38ch] mb-8">
+          Answer 5 quick questions. Takes 60 seconds. We'll show you exactly how Catalina can help — and what to do next.
+        </p>
+        <div class="flex items-center gap-3 text-xs text-muted-light">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          60 seconds · No email required
+        </div>
+      </div>
+
+      <!-- Right: quiz -->
+      <div class="bg-white border border-camel-light/40 rounded-3xl p-8 lg:p-10 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.05)]">
+
+        <!-- Progress bar -->
+        <div class="mb-8">
+          <div class="flex items-center justify-between mb-2">
+            <span id="quiz-label" class="text-[11px] font-medium uppercase tracking-widest text-muted-light">Question 1 of 5</span>
+          </div>
+          <div class="h-1 bg-camel-light/50 rounded-full overflow-hidden">
+            <div id="quiz-bar" class="h-full bg-forest rounded-full" style="width: 20%"></div>
+          </div>
+        </div>
+
+        <!-- Q1 -->
+        <div class="quiz-q">
+          <p class="font-serif text-[1.3rem] text-charcoal leading-snug tracking-tight mb-7">How old are you?</p>
+          <div class="grid grid-cols-2 gap-3">
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Under 30</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">30 – 44</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">45 – 55</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Over 55</button>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="quiz-q hidden">
+          <p class="font-serif text-[1.3rem] text-charcoal leading-snug tracking-tight mb-7">What's your main goal right now?</p>
+          <div class="grid grid-cols-1 gap-3">
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Start eating more plants — safely</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Have more energy throughout the day</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Sleep better</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Understand my lab results + what to do</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Prevent the diseases I've seen in my family</button>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="quiz-q hidden">
+          <p class="font-serif text-[1.3rem] text-charcoal leading-snug tracking-tight mb-7">How would you describe your current diet?</p>
+          <div class="grid grid-cols-1 gap-3">
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Mostly meat and processed food</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Mixed — I try but it's inconsistent</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">I eat some plants but want to do more</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Mostly plant-based but struggling with nutrients</button>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="quiz-q hidden">
+          <p class="font-serif text-[1.3rem] text-charcoal leading-snug tracking-tight mb-7">Have you had recent lab work done?</p>
+          <div class="grid grid-cols-1 gap-3">
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Yes — and something was off, but no one explained it</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Yes — everything was "normal" but I still feel bad</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">No, not recently</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">I don't know what labs I should get</button>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="quiz-q hidden">
+          <p class="font-serif text-[1.3rem] text-charcoal leading-snug tracking-tight mb-7">What's holding you back the most?</p>
+          <div class="grid grid-cols-1 gap-3">
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">I don't know where to start</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Worried I'll be deficient (B12, protein, iron)</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Not enough time to cook differently</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">Not sure if this is for someone like me</button>
+            <button class="q-opt text-left border border-camel-light/60 rounded-2xl p-4 text-sm text-charcoal font-medium">My doctor doesn't take nutrition seriously</button>
+          </div>
+        </div>
+
+        <!-- Result screen -->
+        <div id="quiz-result" class="hidden">
+          <div class="text-center py-4">
+            <div class="w-14 h-14 bg-forest-light rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg class="w-6 h-6 text-forest" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="font-serif text-[1.7rem] text-charcoal leading-snug tracking-tight mb-4">A session with Catalina<br/>is the right next step.</h3>
+            <p class="text-muted text-sm leading-relaxed max-w-[38ch] mx-auto mb-8">
+              In 60 minutes, you'll have a full picture of your habits, your labs, and a personalized plan — built around your body, not a template.
+            </p>
+            <a href="https://nas.io/dracatalinalefort/sessions/medicina.general" target="_blank" rel="noopener" class="btn-forest inline-block bg-forest text-cream font-medium px-8 py-4 rounded-full text-sm mb-4">
+              Reservar sesión en NAS.io →
+            </a>
+            <div class="text-xs text-muted-light">Online · $59.91 USD · 60 min · Real MD · No account needed</div>
+            <button id="quiz-restart" class="mt-6 text-xs text-muted underline underline-offset-2">Start over</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─── BOOK / CAL.COM EMBED ──────────────────────────────────────── -->
+  <section id="book" class="py-20 lg:py-28 bg-cream px-5 lg:px-10 border-t border-camel-light/30">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 items-start">
+
+      <!-- Left: copy -->
+      <div class="lg:pt-8">
+        <span class="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-forest/60 mb-6">
+          <span class="w-2 h-2 rounded-full bg-forest pulse-dot"></span>
+          First sessions available now
+        </span>
+        <h2 class="font-serif text-[2.4rem] lg:text-[3rem] text-charcoal leading-[1.06] tracking-tight mb-5 max-w-[18ch]">
+          Ready to start?<br/>
+          <em class="text-forest">Pick a time.</em>
+        </h2>
+        <p class="text-muted text-[1rem] leading-relaxed max-w-[42ch] mb-10">
+          Book a 60-minute session directly. No account needed — just choose a slot, enter your name and email, and you're confirmed.
+        </p>
+
+        <!-- Trust bullets -->
+        <ul class="space-y-4 mb-10">
+          <li class="flex items-start gap-3">
+            <div class="w-5 h-5 bg-forest-light rounded-full flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3 text-forest" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <span class="text-sm text-charcoal leading-relaxed"><strong>Licensed MD</strong> — not a nutritionist or coach. I can read your labs and prescribe if needed.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-5 h-5 bg-forest-light rounded-full flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3 text-forest" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <span class="text-sm text-charcoal leading-relaxed"><strong>60 full minutes</strong> — I ask everything. No rushed 10-minute appointment.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-5 h-5 bg-forest-light rounded-full flex items-center justify-center shrink-0 mt-0.5">
+              <svg class="w-3 h-3 text-forest" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            </div>
+            <span class="text-sm text-charcoal leading-relaxed"><strong>$59.91 USD</strong> · 100% online · Available from anywhere</span>
+          </li>
+        </ul>
+
+        <p class="text-xs text-muted-light">
+          Prefer to book through NAS.io?
+          <a href="https://nas.io/dracatalinalefort" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-charcoal transition-colors ml-1">Book there →</a>
+        </p>
+      </div>
+
+      <!-- Right: Cal.com embed -->
+      <div class="rounded-2xl overflow-hidden border border-camel-light/50 shadow-[0_24px_60px_-16px_rgba(0,0,0,0.08)] bg-white">
+        <!-- Replace CAL_LINK_HERE with Catalina's Cal.com URL, e.g. cal.com/catalinalefort/session -->
+        <iframe
+          src="https://cal.com/catalina-le-fort/15min?embed=true&theme=light&hideEventTypeDetails=false&layout=month_view"
+          width="100%"
+          height="680"
+          frameborder="0"
+          scrolling="yes"
+          style="display:block;"
+          title="Book a session with Dra. Catalina Lefort"
+        ></iframe>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ─── FOOTER ─────────────────────────────────────────────────────── -->
+  <footer class="bg-charcoal py-14 px-5 lg:px-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-[2fr_1fr_1fr_1fr] gap-10 mb-12">
+        <div>
+          <a href="#" class="font-serif text-xl text-cream font-medium tracking-tight block mb-4">Dra. Catalina Lefort</a>
+          <p class="text-[13px] text-cream/40 leading-relaxed max-w-[30ch]">
+            Lifestyle medicine physician helping you eat more plants, sleep better, and prevent chronic disease — safely.
+          </p>
+          <div class="flex gap-4 mt-6">
+            <a href="https://www.instagram.com/dra.catalinalefort" target="_blank" rel="noopener" class="w-8 h-8 border border-cream/15 rounded-full flex items-center justify-center hover:border-cream/40 transition-colors">
+              <svg class="w-3.5 h-3.5 text-cream/50" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://nas.io/dracatalinalefort" target="_blank" rel="noopener" class="w-8 h-8 border border-cream/15 rounded-full flex items-center justify-center hover:border-cream/40 transition-colors">
+              <svg class="w-3.5 h-3.5 text-cream/50" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-cream/30 mb-5 font-medium">Sessions</div>
+          <div class="space-y-3">
+            <a href="https://nas.io/dracatalinalefort" target="_blank" rel="noopener" class="block text-[13px] text-cream/50 hover:text-cream/80 transition-colors">First session · $59.91</a>
+            <a href="https://nas.io/dracatalinalefort" target="_blank" rel="noopener" class="block text-[13px] text-cream/50 hover:text-cream/80 transition-colors">Free guide</a>
+            <a href="https://nas.io/dracatalinalefort" target="_blank" rel="noopener" class="block text-[13px] text-cream/50 hover:text-cream/80 transition-colors">12-day challenge (soon)</a>
+          </div>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-cream/30 mb-5 font-medium">About</div>
+          <div class="space-y-3">
+            <a href="#method"  class="block text-[13px] text-cream/50 hover:text-cream/80 transition-colors">The method</a>
+            <a href="#session" class="block text-[13px] text-cream/50 hover:text-cream/80 transition-colors">How it works</a>
+            <a href="#faq"     class="block text-[13px] text-cream/50 hover:text-cream/80 transition-colors">FAQ</a>
+            <a href="#quiz"    class="block text-[13px] text-cream/50 hover:text-cream/80 transition-colors">Take the quiz</a>
+          </div>
+        </div>
+        <div>
+          <div class="text-[11px] uppercase tracking-widest text-cream/30 mb-5 font-medium">Contact</div>
+          <div class="space-y-3">
+            <a href="https://nas.io/dracatalinalefort" target="_blank" rel="noopener" class="block text-[13px] text-cream/50 hover:text-cream/80 transition-colors">Book a session</a>
+            <a href="https://www.instagram.com/dra.catalinalefort" target="_blank" rel="noopener" class="block text-[13px] text-cream/50 hover:text-cream/80 transition-colors">@dra.catalinalefort</a>
+            <span class="block text-[13px] text-cream/30">Chile · Online · Spanish</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-cream/8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <span class="text-[11px] text-cream/25">© 2026 Dra. Catalina Lefort. All rights reserved.</span>
+        <div class="flex gap-6">
+          <a href="#" class="text-[11px] text-cream/25 hover:text-cream/50 transition-colors">Privacy Policy</a>
+          <a href="#" class="text-[11px] text-cream/25 hover:text-cream/50 transition-colors">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ─── FUNNEL OVERLAY LOGIC ─────────────────────────────────────── -->
+  <script>
+    (function () {
+      var answers = { trigger: null };
+      var history = [];
+      var current = 'hero';
+      var TOTAL = 10;
+      var qNums = { q1:1,q2:2,q3:3,q4:4,q5:5,q6:6,q7:7,q8:8,q9:9,q10:10,contact:10 };
+
+      var resultHeadlines = {
+        exams:      'Identificamos que tus exámenes son tu mayor preocupación — <em style="color:#2B4A39;">y eso tiene solución.</em>',
+        fatigue:    'Identificamos que tu energía es la prioridad número uno — <em style="color:#2B4A39;">y tiene una causa real.</em>',
+        plants:     'Identificamos que quieres hacer la transición plant-based de forma <em style="color:#2B4A39;">segura y sin deficiencias.</em>',
+        prevention: 'Identificamos que quieres tomar el control preventivo de tu salud — <em style="color:#2B4A39;">con evidencia, sin extremos.</em>'
+      };
+
+      function foGo(pageId, dir) {
+        dir = dir || 'r';
+        var cur = document.getElementById('fo-' + current);
+        var nxt = document.getElementById('fo-' + pageId);
+        if (!nxt) return;
+        if (cur) { cur.classList.remove('fo-active','fo-slide-r','fo-slide-l'); }
+        nxt.classList.add('fo-active');
+        nxt.classList.remove('fo-slide-r','fo-slide-l');
+        void nxt.offsetWidth;
+        nxt.classList.add(dir === 'r' ? 'fo-slide-r' : 'fo-slide-l');
+        history.push(current);
+        current = pageId;
+        updateProg(pageId);
+        var overlay = document.getElementById('fo');
+        if (overlay) overlay.scrollTop = 0;
+      }
+      window.foGo = foGo;
+
+      function foBack() {
+        if (history.length === 0) return;
+        var prev = history.pop();
+        var cur = document.getElementById('fo-' + current);
+        var prv = document.getElementById('fo-' + prev);
+        if (cur) cur.classList.remove('fo-active','fo-slide-r','fo-slide-l');
+        if (prv) {
+          prv.classList.add('fo-active');
+          prv.classList.remove('fo-slide-r','fo-slide-l');
+          void prv.offsetWidth;
+          prv.classList.add('fo-slide-l');
+        }
+        current = prev;
+        updateProg(prev);
+        var overlay = document.getElementById('fo');
+        if (overlay) overlay.scrollTop = 0;
+      }
+      window.foBack = foBack;
+
+      function updateProg(pageId) {
+        var wrap = document.getElementById('fo-prog-wrap');
+        var fill = document.getElementById('fo-fill');
+        var cnt  = document.getElementById('fo-count');
+        if (pageId === 'hero' || pageId === 'results') {
+          wrap.style.display = 'none'; return;
+        }
+        wrap.style.display = 'flex';
+        var n = qNums[pageId] || 0;
+        if (pageId === 'contact') {
+          fill.style.width = '100%'; cnt.textContent = '10 / 10';
+        } else {
+          fill.style.width = (((n - 1) / TOTAL) * 100) + '%';
+          cnt.textContent = (n - 1) + ' / 10';
+        }
+      }
+
+      function foAnswer(field, value, btn, next) {
+        answers[field] = value;
+        var opts = btn.closest('.fo-opts').querySelectorAll('.fo-opt');
+        opts.forEach(function(o) { o.classList.remove('fo-sel'); });
+        btn.classList.add('fo-sel');
+        setTimeout(function () { foGo(next, 'r'); }, 220);
+      }
+      window.foAnswer = foAnswer;
+
+      function foSubmit(e) {
+        e.preventDefault();
+        answers.name  = document.getElementById('fo-name').value.trim();
+        answers.email = document.getElementById('fo-email').value.trim();
+        answers.phone = document.getElementById('fo-phone').value.trim();
+        var hl = resultHeadlines[answers.trigger] || resultHeadlines.fatigue;
+        document.getElementById('fo-result-headline').innerHTML = hl;
+        var isSoft = answers.readiness === 'doubts' || answers.readiness === 'more_info';
+        if (isSoft) { document.getElementById('fo-guide-btn').style.display = 'flex'; }
+        foGo('results', 'r');
+        // Open NAS.IO in new tab after brief delay
+        setTimeout(function () {
+          window.open('https://nas.io/dracatalinalefort/sessions/medicina.general', '_blank');
+        }, 800);
+      }
+      window.foSubmit = foSubmit;
+
+      function foOpen() {
+        var fo = document.getElementById('fo');
+        fo.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      window.foOpen = foOpen;
+
+      function foClose() {
+        var fo = document.getElementById('fo');
+        fo.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      window.foClose = foClose;
+    })();
+  </script>
+
+  <!-- ─── QUIZ LOGIC ─────────────────────────────────────────────────── -->
+  <script>
+    (function () {
+      const steps   = document.querySelectorAll('.quiz-q');
+      const result  = document.getElementById('quiz-result');
+      const bar     = document.getElementById('quiz-bar');
+      const label   = document.getElementById('quiz-label');
+      const total   = steps.length;
+
+      function show(i) {
+        steps.forEach(function(s, j) { s.classList.toggle('hidden', j !== i); });
+        if (result) result.classList.add('hidden');
+        bar.style.width = (((i + 1) / total) * 100) + '%';
+        label.textContent = 'Question ' + (i + 1) + ' of ' + total;
+      }
+
+      steps.forEach(function(step, i) {
+        step.querySelectorAll('.q-opt').forEach(function(btn) {
+          btn.addEventListener('click', function () {
+            btn.style.borderColor = '#2B4A39';
+            btn.style.background  = '#E8F0EB';
+            setTimeout(function () {
+              if (i < total - 1) {
+                show(i + 1);
+              } else {
+                steps.forEach(function(s) { s.classList.add('hidden'); });
+                if (result) result.classList.remove('hidden');
+                bar.style.width = '100%';
+                label.textContent = 'Done!';
+              }
+            }, 180);
+          });
+        });
+      });
+
+      var restart = document.getElementById('quiz-restart');
+      if (restart) {
+        restart.addEventListener('click', function () {
+          show(0);
+          steps.forEach(function(step) {
+            step.querySelectorAll('.q-opt').forEach(function(btn) {
+              btn.style.borderColor = '';
+              btn.style.background  = '';
+            });
+          });
+        });
+      }
+
+      show(0);
+    })();
+  </script>
+
+</body>
+</html>
